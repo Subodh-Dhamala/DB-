@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,OneToMany } from "typeorm";
+import { Booking } from "./Booking";
 
 @Entity({ name: "users" })
 export class User {
@@ -16,4 +17,13 @@ export class User {
 
   @Column({ type: "varchar", length: 50 })
   country!: string;
+
+  @CreateDateColumn()
+  CreatedAt!: Date;
+
+
+  @OneToMany(()=>Booking,booking=>booking.user)
+  bookings! : Booking[]
+
+
 }

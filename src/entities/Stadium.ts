@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column,OneToMany } from "typeorm";
+import { Match } from "./Match";
 
 @Entity({ name: "stadiums" })
 export class Stadium {
@@ -14,6 +15,14 @@ export class Stadium {
   @Column({ type: "varchar", length: 50 })
   country!: string;
 
-  @Column()
+  @Column({type: "integer"})
   capacity!: number;
+
+  @OneToMany(()=>Match,match=>match.stadium)
+  matches!: Match[];
+  
+
+
+
+
 }
