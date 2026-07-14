@@ -5,12 +5,15 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { AppDataSource } from './lib/database';
+import { RegisterRoutes } from "./generated/routes";
 
 const app = express();
 const PORT = process.env.PORT || 4500;
 
 
 app.use(express.json());
+
+RegisterRoutes(app);
 
 app.get('/',(req,res)=>{
   res.send('Server is working fine!');
