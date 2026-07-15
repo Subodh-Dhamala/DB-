@@ -4,6 +4,8 @@ import { Match } from "../entities/Match";
 import { Team } from "../entities/Team";
 import { Stadium } from "../entities/Stadium";
 
+import {MoreThan} from 'typeorm';
+
 export interface CreateMatchDto{
   homeTeamId: number;
   awayTeamId:number;
@@ -139,6 +141,22 @@ async createMatch(matchData: CreateMatchDto){
       message: `Match ${id} deleted successfully!`
     }
 
+  }
+
+  getUpcomingMatches(){
+    return this.matchRepo.find({
+      where:{
+        matchDate: MoreThan(new Date()),
+      },
+      relations: {
+        homeTeam:true,
+        awayTeam:true,
+        stadium:true,
+      },
+      order:{
+        matchDate: "ASC",
+      },
+    });
   }
 
 

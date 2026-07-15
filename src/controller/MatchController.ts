@@ -34,4 +34,9 @@ export class MatchController extends Controller{
     return this.matchService.deleteMatch(id);
   }
 
+  @Get("upcoming")
+  getUpcomingMatches() {
+    return this.matchService.getUpcomingMatches();
+}
+
 }
