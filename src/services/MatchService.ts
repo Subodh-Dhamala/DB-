@@ -176,5 +176,15 @@ async createMatch(matchData: CreateMatchDto){
   });
 }
 
+  getMatchesWithTeams() {
+  return this.matchRepo.find({
+    relations: {
+      homeTeam: true,
+      awayTeam: true,
+      stadium: true,
+    },
+  });
+}
+
 
 }

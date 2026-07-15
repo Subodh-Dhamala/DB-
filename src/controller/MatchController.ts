@@ -39,9 +39,14 @@ export class MatchController extends Controller{
     return this.matchService.getUpcomingMatches();
 }
 
-@Get("{id}/available-tickets")
-getAvailableTickets(@Path() id: number) {
+    @Get("{id}/available-tickets")
+  getAvailableTickets(@Path() id: number) {
   return this.matchService.getAvailableTickets(id);
+}
+
+@Get("with-teams")
+getMatchesWithTeams() {
+  return this.matchService.getMatchesWithTeams();
 }
 
 }
