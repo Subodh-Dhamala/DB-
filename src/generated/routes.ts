@@ -13,6 +13,8 @@ import { TeamController } from './../controller/TeamController';
 import { StadiumController } from './../controller/StadiumController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { MatchController } from './../controller/MatchController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { BookingController } from './../controller/BookingController';
 import type { Request as ExRequest, Response as ExResponse, RequestHandler, Router } from 'express';
 
 
@@ -136,6 +138,16 @@ const models: TsoaRoute.Models = {
             "stadiumId": {"dataType":"double","required":true},
             "matchDate": {"dataType":"datetime","required":true},
             "stage": {"dataType":"string","required":true},
+        },
+        "additionalProperties": true,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "CreateBookingDto": {
+        "dataType": "refObject",
+        "properties": {
+            "userId": {"dataType":"double","required":true},
+            "ticketId": {"dataType":"double","required":true},
+            "paymentStatus": {"dataType":"string","required":true},
         },
         "additionalProperties": true,
     },
@@ -896,6 +908,156 @@ export function RegisterRoutes(app: Router) {
 
               await templateService.apiHandler({
                 methodName: 'deleteMatch',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsBookingController_getBookings: Record<string, TsoaRoute.ParameterSchema> = {
+        };
+        app.get('/bookings',
+            ...(fetchMiddlewares<RequestHandler>(BookingController)),
+            ...(fetchMiddlewares<RequestHandler>(BookingController.prototype.getBookings)),
+
+            async function BookingController_getBookings(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsBookingController_getBookings, request, response });
+
+                const controller = new BookingController();
+
+              await templateService.apiHandler({
+                methodName: 'getBookings',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsBookingController_getBookingById: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+        };
+        app.get('/bookings/:id',
+            ...(fetchMiddlewares<RequestHandler>(BookingController)),
+            ...(fetchMiddlewares<RequestHandler>(BookingController.prototype.getBookingById)),
+
+            async function BookingController_getBookingById(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsBookingController_getBookingById, request, response });
+
+                const controller = new BookingController();
+
+              await templateService.apiHandler({
+                methodName: 'getBookingById',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsBookingController_createBooking: Record<string, TsoaRoute.ParameterSchema> = {
+                bookingData: {"in":"body","name":"bookingData","required":true,"ref":"CreateBookingDto"},
+        };
+        app.post('/bookings',
+            ...(fetchMiddlewares<RequestHandler>(BookingController)),
+            ...(fetchMiddlewares<RequestHandler>(BookingController.prototype.createBooking)),
+
+            async function BookingController_createBooking(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsBookingController_createBooking, request, response });
+
+                const controller = new BookingController();
+
+              await templateService.apiHandler({
+                methodName: 'createBooking',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: 201,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsBookingController_updateBooking: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+                bookingData: {"in":"body","name":"bookingData","required":true,"ref":"CreateBookingDto"},
+        };
+        app.put('/bookings/:id',
+            ...(fetchMiddlewares<RequestHandler>(BookingController)),
+            ...(fetchMiddlewares<RequestHandler>(BookingController.prototype.updateBooking)),
+
+            async function BookingController_updateBooking(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsBookingController_updateBooking, request, response });
+
+                const controller = new BookingController();
+
+              await templateService.apiHandler({
+                methodName: 'updateBooking',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsBookingController_deleteBooking: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+        };
+        app.delete('/bookings/:id',
+            ...(fetchMiddlewares<RequestHandler>(BookingController)),
+            ...(fetchMiddlewares<RequestHandler>(BookingController.prototype.deleteBooking)),
+
+            async function BookingController_deleteBooking(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsBookingController_deleteBooking, request, response });
+
+                const controller = new BookingController();
+
+              await templateService.apiHandler({
+                methodName: 'deleteBooking',
                 controller,
                 response,
                 next,
