@@ -11,6 +11,16 @@ export class UserController extends Controller {
     return this.userService.getAllUsers();
   }
 
+  @Get("multiple-bookings")
+  getUsersWithMultipleBookings() {
+    return this.userService.getUsersWithMultipleBookings();
+  }
+
+  @Get("{id}/bookings")
+  getUserBookings(@Path() id: number) {
+    return this.userService.getUserBookings(id);
+  }
+
   @Get("{id}")
   async getUserById(@Path() id: number) {
     return this.userService.getUserById(id);
@@ -35,16 +45,4 @@ export class UserController extends Controller {
   async deleteUser(@Path() id: number) {
     return this.userService.deleteUser(id);
   }
-
-  @Get("{id}/bookings")
-getUserBookings(@Path() id: number) {
-  return this.userService.getUserBookings(id);
-}
-
-  @Get("multiple-bookings")
-getUsersWithMultipleBookings() {
-  return this.userService.getUsersWithMultipleBookings();
-}
-
-
 }

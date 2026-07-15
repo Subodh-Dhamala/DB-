@@ -2,41 +2,39 @@ import { Controller,Get, Post,Delete,Put,Route,Path,Body,SuccessResponse } from 
 
 import { TicketService, CreateTicketDto } from "../services/TicketService";
 
-@Route('tickets')
-export class TicketController extends Controller{
+@Route("tickets")
+export class TicketController extends Controller {
   private ticketService = new TicketService();
 
   @Get()
-  getTickets(){
+  getTickets() {
     return this.ticketService.getAllTickets();
   }
 
-  @Get('{id}')
-  getTicketById(@Path() id: number){
+  @Get("booked")
+  getBookedTickets() {
+    return this.ticketService.getBookedTickets();
+  }
+
+  @Get("{id}")
+  getTicketById(@Path() id: number) {
     return this.ticketService.getTicketById(id);
   }
 
   @Post()
-  @SuccessResponse('201','Created')
-  createTicket(@Body() ticketData: CreateTicketDto){
+  @SuccessResponse("201", "Created")
+  createTicket(@Body() ticketData: CreateTicketDto) {
     this.setStatus(201);
     return this.ticketService.createTicket(ticketData);
   }
 
-
-  @Put('{id}')
-  updateTicket(@Path() id: number, @Body() ticketData: CreateTicketDto){
-    return this.ticketService.updateTicket(id,ticketData);
+  @Put("{id}")
+  updateTicket(@Path() id: number, @Body() ticketData: CreateTicketDto) {
+    return this.ticketService.updateTicket(id, ticketData);
   }
 
-  @Delete('{id}')
-  deleteTicket(@Path() id: number){
+  @Delete("{id}")
+  deleteTicket(@Path() id: number) {
     return this.ticketService.deleteTicket(id);
   }
-
- @Get("booked")
-  getBookedTickets() {
-  return this.ticketService.getBookedTickets();
-  }
-
 }

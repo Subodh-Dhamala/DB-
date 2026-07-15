@@ -3,41 +3,39 @@ import {Controller, Get, Post, Put, Delete, Route, Path, Body, SuccessResponse} 
 import { Stadium } from '../entities/Stadium';
 import { StadiumService } from '../services/StadiumService';
 
-@Route('stadiums')
+@Route("stadiums")
 export class StadiumController extends Controller {
-
   private stadiumService = new StadiumService();
 
   @Get()
-  getStadiums(){
+  getStadiums() {
     return this.stadiumService.getAllStadiums();
   }
 
-  @Get('{id}')
-  getStadiumById(@Path() id: number){
+  @Get("most-matches")
+  getStadiumWithMostMatches() {
+    return this.stadiumService.getStadiumWithMostMatches();
+  }
+
+  @Get("{id}")
+  getStadiumById(@Path() id: number) {
     return this.stadiumService.getStadiumById(id);
   }
 
   @Post()
-  @SuccessResponse('201','Created')
-  createStadium(@Body() stadiumData: Partial<Stadium>){
+  @SuccessResponse("201", "Created")
+  createStadium(@Body() stadiumData: Partial<Stadium>) {
     this.setStatus(201);
     return this.stadiumService.createStadium(stadiumData);
   }
 
-  @Put('{id}')
-  updateStadium(@Path() id: number, @Body() stadiumData: Partial<Stadium>){
-    return this.stadiumService.updateStadium(id,stadiumData)
+  @Put("{id}")
+  updateStadium(@Path() id: number, @Body() stadiumData: Partial<Stadium>) {
+    return this.stadiumService.updateStadium(id, stadiumData);
   }
 
-  @Delete('{id}')
-  deleteStadium(@Path() id: number){
+  @Delete("{id}")
+  deleteStadium(@Path() id: number) {
     return this.stadiumService.deleteStadium(id);
   }
-
-  @Get("most-matches")
-getStadiumWithMostMatches() {
-  return this.stadiumService.getStadiumWithMostMatches();
-}
-
 }
