@@ -6,6 +6,8 @@ import {  fetchMiddlewares, ExpressTemplateService } from '@tsoa/runtime';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { UserController } from './../controller/UserController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { TicketController } from './../controller/TicketController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { TeamController } from './../controller/TeamController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { StadiumController } from './../controller/StadiumController';
@@ -102,6 +104,18 @@ const models: TsoaRoute.Models = {
     "Partial_User_": {
         "dataType": "refAlias",
         "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"id":{"dataType":"double"},"fullName":{"dataType":"string"},"email":{"dataType":"string"},"phone":{"dataType":"string"},"country":{"dataType":"string"},"CreatedAt":{"dataType":"datetime"},"bookings":{"dataType":"array","array":{"dataType":"refObject","ref":"Booking"}}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "CreateTicketDto": {
+        "dataType": "refObject",
+        "properties": {
+            "matchId": {"dataType":"double","required":true},
+            "seatNumber": {"dataType":"string","required":true},
+            "ticketType": {"dataType":"string","required":true},
+            "price": {"dataType":"double","required":true},
+            "status": {"dataType":"string","required":true},
+        },
+        "additionalProperties": true,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "Partial_Team_": {
@@ -282,6 +296,156 @@ export function RegisterRoutes(app: Router) {
 
               await templateService.apiHandler({
                 methodName: 'deleteUser',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsTicketController_getTickets: Record<string, TsoaRoute.ParameterSchema> = {
+        };
+        app.get('/tickets',
+            ...(fetchMiddlewares<RequestHandler>(TicketController)),
+            ...(fetchMiddlewares<RequestHandler>(TicketController.prototype.getTickets)),
+
+            async function TicketController_getTickets(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsTicketController_getTickets, request, response });
+
+                const controller = new TicketController();
+
+              await templateService.apiHandler({
+                methodName: 'getTickets',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsTicketController_getTicketById: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+        };
+        app.get('/tickets/:id',
+            ...(fetchMiddlewares<RequestHandler>(TicketController)),
+            ...(fetchMiddlewares<RequestHandler>(TicketController.prototype.getTicketById)),
+
+            async function TicketController_getTicketById(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsTicketController_getTicketById, request, response });
+
+                const controller = new TicketController();
+
+              await templateService.apiHandler({
+                methodName: 'getTicketById',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsTicketController_createTicket: Record<string, TsoaRoute.ParameterSchema> = {
+                ticketData: {"in":"body","name":"ticketData","required":true,"ref":"CreateTicketDto"},
+        };
+        app.post('/tickets',
+            ...(fetchMiddlewares<RequestHandler>(TicketController)),
+            ...(fetchMiddlewares<RequestHandler>(TicketController.prototype.createTicket)),
+
+            async function TicketController_createTicket(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsTicketController_createTicket, request, response });
+
+                const controller = new TicketController();
+
+              await templateService.apiHandler({
+                methodName: 'createTicket',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: 201,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsTicketController_updateTicket: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+                ticketData: {"in":"body","name":"ticketData","required":true,"ref":"CreateTicketDto"},
+        };
+        app.put('/tickets/:id',
+            ...(fetchMiddlewares<RequestHandler>(TicketController)),
+            ...(fetchMiddlewares<RequestHandler>(TicketController.prototype.updateTicket)),
+
+            async function TicketController_updateTicket(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsTicketController_updateTicket, request, response });
+
+                const controller = new TicketController();
+
+              await templateService.apiHandler({
+                methodName: 'updateTicket',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsTicketController_deleteTicket: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+        };
+        app.delete('/tickets/:id',
+            ...(fetchMiddlewares<RequestHandler>(TicketController)),
+            ...(fetchMiddlewares<RequestHandler>(TicketController.prototype.deleteTicket)),
+
+            async function TicketController_deleteTicket(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsTicketController_deleteTicket, request, response });
+
+                const controller = new TicketController();
+
+              await templateService.apiHandler({
+                methodName: 'deleteTicket',
                 controller,
                 response,
                 next,
