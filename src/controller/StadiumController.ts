@@ -35,5 +35,9 @@ export class StadiumController extends Controller {
     return this.stadiumService.deleteStadium(id);
   }
 
+  @Get("most-matches")
+getStadiumWithMostMatches() {
+  return this.stadiumService.getStadiumWithMostMatches();
+}
 
 }

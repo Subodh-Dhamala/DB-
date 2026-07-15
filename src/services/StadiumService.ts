@@ -56,5 +56,23 @@ export class StadiumService{
 
   }
 
+  getStadiumWithMostMatches() {
+  return this.stadiumRepo
+    .createQueryBuilder("stadium")
+    .leftJoin("stadium.matches", "match")
+    .select("stadium.id", "id")
+    .addSelect("stadium.stadiumName", "stadiumName")
+    .addSelect("stadium.city", "city")
+    .addSelect("stadium.country", "country")
+    .addSelect("COUNT(match.id)", "totalMatches")
+    .groupBy("stadium.id")
+    .addGroupBy("stadium.stadiumName")
+    .addGroupBy("stadium.city")
+    .addGroupBy("stadium.country")
+    .orderBy("COUNT(match.id)", "DESC")
+    .limit(1)
+    .getRawOne();
+}
+
 
 }
