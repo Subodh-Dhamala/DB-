@@ -88,4 +88,17 @@ export class TicketService {
       message: `Ticket ${existing.seatNumber} deleted successfully!`,
     };
   }
+
+  getBookedTickets() {
+  return this.ticketRepo.find({
+    where: {
+      status: "BOOKED",
+    },
+    relations: {
+      match: true,
+    },
+  });
+}
+
+
 }

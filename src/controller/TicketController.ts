@@ -33,5 +33,10 @@ export class TicketController extends Controller{
   deleteTicket(@Path() id: number){
     return this.ticketService.deleteTicket(id);
   }
-  
+
+ @Get("booked")
+  getBookedTickets() {
+  return this.ticketService.getBookedTickets();
+  }
+
 }
