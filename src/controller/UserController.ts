@@ -41,5 +41,10 @@ getUserBookings(@Path() id: number) {
   return this.userService.getUserBookings(id);
 }
 
+  @Get("multiple-bookings")
+getUsersWithMultipleBookings() {
+  return this.userService.getUsersWithMultipleBookings();
+}
+
 
 }

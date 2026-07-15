@@ -60,6 +60,19 @@ export class UserService{
   });
 }
 
+getUsersWithMultipleBookings() {
+  return this.userRepo
+    .createQueryBuilder("user")
+    .innerJoin("user.bookings", "booking")
+    .select("user.id", "id")
+    .addSelect("user.fullName", "fullName")
+    .addSelect("COUNT(booking.id)", "totalBookings")
+    .groupBy("user.id")
+    .addGroupBy("user.fullName")
+    .having("COUNT(booking.id) > :count", { count: 1 })
+    .getRawMany();
+}
+
   
 
 
