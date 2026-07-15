@@ -186,5 +186,17 @@ async createMatch(matchData: CreateMatchDto){
   });
 }
 
+getRevenuePerMatch() {
+  return this.matchRepo
+    .createQueryBuilder("match")
+    .leftJoin("match.tickets", "ticket")
+    .select("match.id", "matchId")
+    .addSelect("SUM(ticket.price)", "revenue")
+    .where("ticket.status = :status", {
+      status: "BOOKED",
+    })
+    .groupBy("match.id")
+    .getRawMany();
+}
 
 }

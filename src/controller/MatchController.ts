@@ -49,4 +49,9 @@ getMatchesWithTeams() {
   return this.matchService.getMatchesWithTeams();
 }
 
+@Get("revenue")
+getRevenuePerMatch() {
+  return this.matchService.getRevenuePerMatch();
+}
+
 }
