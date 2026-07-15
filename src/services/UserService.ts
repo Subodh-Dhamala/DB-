@@ -1,9 +1,13 @@
 import { AppDataSource } from "../lib/database";
 import { User } from "../entities/User";
 
+import { Booking } from "../entities/Booking";
+
 export class UserService{
 
   private userRepo = AppDataSource.getRepository(User);
+
+  private bookingRepo = AppDataSource.getRepository(Booking);
 
   getAllUsers(){
     return this.userRepo.find();
@@ -39,6 +43,22 @@ export class UserService{
     }
 
   }
+
+  getUserBookings(id: number) {
+  return this.bookingRepo.find({
+    where: {
+      user: {
+        id,
+      },
+    },
+    relations: {
+      user: true,
+      ticket: {
+        match: true,
+      },
+    },
+  });
+}
 
   
 

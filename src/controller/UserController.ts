@@ -35,4 +35,11 @@ export class UserController extends Controller {
   async deleteUser(@Path() id: number) {
     return this.userService.deleteUser(id);
   }
+
+  @Get("{id}/bookings")
+getUserBookings(@Path() id: number) {
+  return this.userService.getUserBookings(id);
+}
+
+
 }
