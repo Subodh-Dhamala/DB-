@@ -4,6 +4,8 @@ import { Match } from "../entities/Match";
 import { Team } from "../entities/Team";
 import { Stadium } from "../entities/Stadium";
 
+import { Ticket } from "../entities/Ticket";
+
 import {MoreThan} from 'typeorm';
 
 export interface CreateMatchDto{
@@ -19,6 +21,7 @@ export class MatchService{
 private matchRepo = AppDataSource.getRepository(Match);
 private teamRepo = AppDataSource.getRepository(Team);
 private stadiumRepo = AppDataSource.getRepository(Stadium);
+private ticketRepo = AppDataSource.getRepository(Ticket);
 
 getAllMatches(){
   return this.matchRepo.find({
@@ -158,6 +161,20 @@ async createMatch(matchData: CreateMatchDto){
       },
     });
   }
+
+  getAvailableTickets(matchId: number) {
+  return this.ticketRepo.find({
+    where: {
+      status: "AVAILABLE",
+      match: {
+        id: matchId,
+      },
+    },
+    relations: {
+      match: true,
+    },
+  });
+}
 
 
 }
