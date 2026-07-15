@@ -518,3 +518,117 @@ values
 (1,21,'PAID','2026-07-13'),
 (12,23,'PAID','2026-07-13');
 ```
+# API Endpoints
+
+---
+
+## Users
+
+### CRUD
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/users` | Get all users |
+| GET | `/users/{id}` | Get user by ID |
+| POST | `/users` | Create a new user |
+| PUT | `/users/{id}` | Update a user |
+| DELETE | `/users/{id}` | Delete a user |
+
+### QueryBuilder
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/users/{id}/bookings` | Get all bookings for a specific user |
+| GET | `/users/multiple-bookings` | Get users who have booked more than one ticket |
+
+---
+
+## Teams
+
+### CRUD
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/teams` | Get all teams |
+| GET | `/teams/{id}` | Get team by ID |
+| POST | `/teams` | Create a new team |
+| PUT | `/teams/{id}` | Update a team |
+| DELETE | `/teams/{id}` | Delete a team |
+
+---
+
+## Stadiums
+
+### CRUD
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/stadiums` | Get all stadiums |
+| GET | `/stadiums/{id}` | Get stadium by ID |
+| POST | `/stadiums` | Create a new stadium |
+| PUT | `/stadiums/{id}` | Update a stadium |
+| DELETE | `/stadiums/{id}` | Delete a stadium |
+
+### QueryBuilder
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/stadiums/most-matches` | Get the stadium hosting the most matches |
+
+---
+
+## Matches
+
+### CRUD
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/matches` | Get all matches |
+| GET | `/matches/{id}` | Get match by ID |
+| POST | `/matches` | Create a new match |
+| PUT | `/matches/{id}` | Update a match |
+| DELETE | `/matches/{id}` | Delete a match |
+
+### QueryBuilder
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/matches/with-teams` | List matches with participating teams |
+| GET | `/matches/upcoming` | List upcoming matches |
+| GET | `/matches/revenue` | Calculate revenue generated per match |
+| GET | `/matches/tickets-sold` | Count tickets sold for each match |
+| GET | `/matches/{id}/available-tickets` | Get available tickets for a specific match |
+
+---
+
+## Tickets
+
+### CRUD
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/tickets` | Get all tickets |
+| GET | `/tickets/{id}` | Get ticket by ID |
+| POST | `/tickets` | Create a new ticket |
+| PUT | `/tickets/{id}` | Update a ticket |
+| DELETE | `/tickets/{id}` | Delete a ticket |
+
+### QueryBuilder
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/tickets/booked` | Get all booked tickets |
+
+---
+
+## Bookings
+
+### CRUD
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/bookings` | Get all bookings |
+| GET | `/bookings/{id}` | Get booking by ID |
+| POST | `/bookings` | Create a new booking |
+| PUT | `/bookings/{id}` | Update a booking |
+| DELETE | `/bookings/{id}` | Delete a booking |
