@@ -54,4 +54,9 @@ getRevenuePerMatch() {
   return this.matchService.getRevenuePerMatch();
 }
 
+@Get("tickets-sold")
+getTicketsSoldPerMatch() {
+  return this.matchService.getTicketsSoldPerMatch();
+}
+
 }

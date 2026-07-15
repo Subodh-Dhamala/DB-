@@ -199,4 +199,17 @@ getRevenuePerMatch() {
     .getRawMany();
 }
 
+getTicketsSoldPerMatch() {
+  return this.matchRepo
+    .createQueryBuilder("match")
+    .leftJoin("match.tickets", "ticket")
+    .select("match.id", "matchId")
+    .addSelect("COUNT(ticket.id)", "ticketsSold")
+    .where("ticket.status = :status", {
+      status: "BOOKED",
+    })
+    .groupBy("match.id")
+    .getRawMany();
+}
+
 }
