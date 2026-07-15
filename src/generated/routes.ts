@@ -9,6 +9,8 @@ import { UserController } from './../controller/UserController';
 import { TeamController } from './../controller/TeamController';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { StadiumController } from './../controller/StadiumController';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { MatchController } from './../controller/MatchController';
 import type { Request as ExRequest, Response as ExResponse, RequestHandler, Router } from 'express';
 
 
@@ -110,6 +112,18 @@ const models: TsoaRoute.Models = {
     "Partial_Stadium_": {
         "dataType": "refAlias",
         "type": {"dataType":"nestedObjectLiteral","nestedProperties":{"id":{"dataType":"double"},"stadiumName":{"dataType":"string"},"city":{"dataType":"string"},"country":{"dataType":"string"},"capacity":{"dataType":"double"},"matches":{"dataType":"array","array":{"dataType":"refObject","ref":"Match"}}},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "CreateMatchDto": {
+        "dataType": "refObject",
+        "properties": {
+            "homeTeamId": {"dataType":"double","required":true},
+            "awayTeamId": {"dataType":"double","required":true},
+            "stadiumId": {"dataType":"double","required":true},
+            "matchDate": {"dataType":"datetime","required":true},
+            "stage": {"dataType":"string","required":true},
+        },
+        "additionalProperties": true,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
@@ -568,6 +582,156 @@ export function RegisterRoutes(app: Router) {
 
               await templateService.apiHandler({
                 methodName: 'deleteStadium',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsMatchController_getMatches: Record<string, TsoaRoute.ParameterSchema> = {
+        };
+        app.get('/matches',
+            ...(fetchMiddlewares<RequestHandler>(MatchController)),
+            ...(fetchMiddlewares<RequestHandler>(MatchController.prototype.getMatches)),
+
+            async function MatchController_getMatches(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsMatchController_getMatches, request, response });
+
+                const controller = new MatchController();
+
+              await templateService.apiHandler({
+                methodName: 'getMatches',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsMatchController_getMatchById: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+        };
+        app.get('/matches/:id',
+            ...(fetchMiddlewares<RequestHandler>(MatchController)),
+            ...(fetchMiddlewares<RequestHandler>(MatchController.prototype.getMatchById)),
+
+            async function MatchController_getMatchById(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsMatchController_getMatchById, request, response });
+
+                const controller = new MatchController();
+
+              await templateService.apiHandler({
+                methodName: 'getMatchById',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsMatchController_createMatch: Record<string, TsoaRoute.ParameterSchema> = {
+                matchData: {"in":"body","name":"matchData","required":true,"ref":"CreateMatchDto"},
+        };
+        app.post('/matches',
+            ...(fetchMiddlewares<RequestHandler>(MatchController)),
+            ...(fetchMiddlewares<RequestHandler>(MatchController.prototype.createMatch)),
+
+            async function MatchController_createMatch(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsMatchController_createMatch, request, response });
+
+                const controller = new MatchController();
+
+              await templateService.apiHandler({
+                methodName: 'createMatch',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: 201,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsMatchController_updateMatch: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+                matchData: {"in":"body","name":"matchData","required":true,"ref":"CreateMatchDto"},
+        };
+        app.put('/matches/:id',
+            ...(fetchMiddlewares<RequestHandler>(MatchController)),
+            ...(fetchMiddlewares<RequestHandler>(MatchController.prototype.updateMatch)),
+
+            async function MatchController_updateMatch(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsMatchController_updateMatch, request, response });
+
+                const controller = new MatchController();
+
+              await templateService.apiHandler({
+                methodName: 'updateMatch',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsMatchController_deleteMatch: Record<string, TsoaRoute.ParameterSchema> = {
+                id: {"in":"path","name":"id","required":true,"dataType":"double"},
+        };
+        app.delete('/matches/:id',
+            ...(fetchMiddlewares<RequestHandler>(MatchController)),
+            ...(fetchMiddlewares<RequestHandler>(MatchController.prototype.deleteMatch)),
+
+            async function MatchController_deleteMatch(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsMatchController_deleteMatch, request, response });
+
+                const controller = new MatchController();
+
+              await templateService.apiHandler({
+                methodName: 'deleteMatch',
                 controller,
                 response,
                 next,
